@@ -301,7 +301,7 @@
       const x = pad + i * bw + 8;
       const bh = (v / maxV) * (h - pad * 2);
       const y = h - pad - bh;
-
+      // Bar
       appendSvg($svg, "rect", {
         x: x,
         y: y,
@@ -309,21 +309,47 @@
         height: bh,
         rx: 6,
         class: "bar",
+        fill:"#0F8A5F"
       });
+
+      // Month text
       appendSvg($svg, "text", {
         x: x + (bw - 16) / 2,
         y: h - pad + 14,
         "text-anchor": "middle",
         "font-size": 10,
       }).text(labels[i]);
+
+      // Actual value
       appendSvg($svg, "text", {
         x: x + (bw - 16) / 2,
-        y: y - 4,
+        y: y + 13,
         "text-anchor": "middle",
         "font-size": 10,
+        "font-weight":"Bold",
+        "fill":"#ffffffff"
+        
       }).text(v);
+
+      // Old design
+      
+      // appendSvg($svg, "text", {
+      //   x: x + (bw - 16) / 2,
+      //   y: y - 4,
+      //   "text-anchor": "middle",
+      //   "font-size": 10,
+      // }).text(v);
     });
   }
+
+
+  // function appendSvg($parent, tag, attrs) 
+  // {
+  //   const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  //   Object.keys(attrs || {}).forEach((k) => el.setAttribute(k, attrs[k]));
+  //   $parent[0].appendChild(el);
+  //   return $(el);
+  // }
 
   function appendSvg($parent, tag, attrs) {
     const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -332,6 +358,7 @@
     return $(el);
   }
 
+  // so cool
   function escapeHtml(str) {
     return (str == null ? "" : String(str))
       .replaceAll("&", "&amp;")
