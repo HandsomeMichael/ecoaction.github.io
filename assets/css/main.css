@@ -20,6 +20,11 @@ p
   font-weight: 500 !important;
 }
 
+.fix-width
+{
+  width: 70px;
+}
+
 html,
 body {
   scroll-behavior: smooth;
